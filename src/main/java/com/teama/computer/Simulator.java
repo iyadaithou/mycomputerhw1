@@ -62,7 +62,7 @@ public class Simulator extends javax.swing.JFrame {
     String x2= "0";
     String x1= "0";
     String x0= "0";
-// we are adding and setting the othe rlements og 
+// we are adding and setting the other elements
     String ix="";
     String i="";
     String address="0000";
