@@ -12,12 +12,15 @@ package com.teama.computer;
 import com.sun.tools.javac.Main;
 //Importing the color class that will be used for the buttons and other elements in the code 
 import java.awt.Color;
+import java.io.BufferedReader;
 //Importing the file class as well/
 import java.io.File;
 //We will be using a hashmap to store the values in the code
 import java.util.HashMap;
 //Importing this to handle errors
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStream;
 import javax.swing.JOptionPane;
 import java.util.Scanner;
@@ -174,6 +177,7 @@ public class Simulator extends javax.swing.JFrame {
         jToggleButton2 = new javax.swing.JToggleButton();
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel14 = new javax.swing.JLabel();
+        jButton18 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
@@ -733,6 +737,13 @@ public class Simulator extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
+        jButton18.setLabel("Run Program 1");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -748,6 +759,10 @@ public class Simulator extends javax.swing.JFrame {
                 .addComponent(I, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Address, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -760,7 +775,9 @@ public class Simulator extends javax.swing.JFrame {
                         .addComponent(IXR_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(I, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton18)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(204, 255, 255));
@@ -1186,7 +1203,7 @@ public class Simulator extends javax.swing.JFrame {
          boolean selected = jToggleButton1.getModel().isSelected();
        if (selected){
             x15="1";
-    jToggleButton1.setForeground(Color.GREEN);
+            jToggleButton1.setForeground(Color.GREEN);
            
        }
        else{
@@ -1196,14 +1213,15 @@ public class Simulator extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
     public void sTringToHexa(){
        // This function converts a string to hexadeicmal format after first concatenating the elements fetched from the operations
-       //he we combine all the strins values
+       // then we combine all the string values
         String finals=x15+x14+x13+x12+x11+x10+x9+x8+x7+x6+x5+x4+x3+x2+x1+x0;
         int binary= Integer.parseInt(finals,2);
         // After combining them, we need to convert the string into a binary string using the following method below
          hexaValue = Integer.toString(binary,16).toUpperCase();
          // 
-        if (hexaValue.length() < 4)//add trailing zeroes
-    hexaValue = "000".substring(hexaValue.length() - 1) + hexaValue;
+        if (hexaValue.length() < 4) {//add trailing zeroes
+            hexaValue = "000".substring(hexaValue.length() - 1) + hexaValue;
+        }
         
     }
      
@@ -1675,7 +1693,7 @@ public void execute(String prc,String bin) {
                 break;
                       
                       
-                  case "STR":
+            case "STR":
                      if ("00".equals(r)){
                      
                         String temp = GPR0.getText();
@@ -1707,7 +1725,7 @@ public void execute(String prc,String bin) {
                      }
                      
                       break;
-                  case "LDX":
+            case "LDX":
                      if ("01".equals(ix)){
                          System.out.println("hello");
                         IXR1.setText(memorya.get(add));
@@ -1727,7 +1745,7 @@ public void execute(String prc,String bin) {
                         MBR.setText(memorya.get(add));
                      }
                       
-                case "STX":
+            case "STX":
                      if("01".equals(ix)){
                         
                         String temp = IXR1.getText();
@@ -1812,6 +1830,54 @@ public void execute(String prc,String bin) {
         TextArea2.setText("");
 
     }//GEN-LAST:event_jButton17ActionPerformed
+
+    
+    // Execute program 1
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        int address=1000;
+        int runner = 1;
+         
+        // no-op space
+        for(int j=1021;j<=1040;j++)
+        {
+             memorya.put(String.valueOf(j), String.valueOf(0));
+        }
+        try {
+            BufferedReader input = new BufferedReader(new FileReader("Program1.txt"));
+            String str;
+            int i = 0;
+            String[] enteredNumbers = TextArea1.getText().split("\\n");
+            while ((str = input.readLine()) != null && i < 20 ) {} {
+                String instruction[] = str.split(" ");
+                
+                // instructions misformatted
+                if (!instruction[0].equals("STR")) {
+                    throw new IOException();
+                }
+                
+                memorya.put(instruction[2], enteredNumbers[i]);
+                i++;
+            }
+            
+        } catch (IOException e) {
+            String ex = e.getMessage();
+        }
+        TextArea2.setText("Input is: ");
+        
+        for(String number: TextArea1.getText().split("\\n"))
+        {
+          if (number.matches("^\\d+$"))
+          {
+                    address++;
+           }
+          else
+          {
+              TextArea2.append("\nWrong input");
+              runner = 0;
+              break;
+          }
+        }
+    }//GEN-LAST:event_jButton18ActionPerformed
     // This method takes a string argument "addr" and returns a string value
     String LastAdd(String addr){
         // Initialize a counter variable to count the number of occurrences of "addr" in the memorya map
@@ -1873,6 +1939,7 @@ public static void main(String args[]) {
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
