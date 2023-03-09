@@ -22,6 +22,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import java.util.Scanner;
 
@@ -936,7 +940,7 @@ public class Simulator extends javax.swing.JFrame {
                             .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -1843,40 +1847,91 @@ public void execute(String prc,String bin) {
              memorya.put(String.valueOf(j), String.valueOf(0));
         }
         try {
-            BufferedReader input = new BufferedReader(new FileReader("Program1.txt"));
-            String str;
-            int i = 0;
+            // only abspath is working right now. fix on a Mac/Nix machine
+            List<String> input = Files.readAllLines(Paths.get("C:/Users/lukas/Documents/mycomputerhw1/src/main/java/com/teama/computer/Program1.txt"));
+            
+            
             String[] enteredNumbers = TextArea1.getText().split("\\n");
-            while ((str = input.readLine()) != null && i < 20 ) {} {
-                String instruction[] = str.split(" ");
+            
+           
+            
+            
+            // 1) read thru store instructions
+            for (int i = 0; i < 20; i++ ) {
+                String instruction[] = input.get(i).split(" ");
                 
                 // instructions misformatted
                 if (!instruction[0].equals("STR")) {
                     throw new IOException();
                 }
+                String enteredNum = enteredNumbers[i];
+                if (!enteredNum.matches("^\\d+$")) {
+                    throw new NumberFormatException();
+                }
+                String binary = Integer.toBinaryString(Integer.parseInt(enteredNum));
                 
-                memorya.put(instruction[2], enteredNumbers[i]);
-                i++;
+                memorya.put(instruction[2], binary);
             }
             
-        } catch (IOException e) {
+            TextArea2.append("Input is: \n ");
+            // 2) read thru Load instructions
+            for (int i = 20 ; i < 40; i++ ) {
+                String instruction[] = input.get(i).split(" ");
+                if(!instruction[0].equals("LDR")) {
+                    throw new IOException();
+                }
+                Integer intFromBinary = Integer.parseInt(memorya.get(instruction[2]), 2);
+                TextArea2.append(intFromBinary + "\n");
+            }
+            
+            
+            Integer comparisonNumberInt = Integer.parseInt((enteredNumbers[20]));
+            // 3) Get Comparison number from input, store
+            String comparisonNumber = Integer.toBinaryString(comparisonNumberInt);
+            
+            // 4) Run Store procedure against memory for comparison
+            String locationForComparison = input.get(40).split("")[2];
+            memorya.put(locationForComparison, comparisonNumber);
+            
+            ArrayList<Integer> nums = new ArrayList();
+            for (String number : enteredNumbers) {
+                nums.add(Integer.parseInt(number));
+            }
+            Integer closest = nums.get(0);
+            Integer difference = Math.abs(nums.get(0) - comparisonNumberInt);
+            for (int i = 1; i < nums.size(); i++) {
+                Integer diff1 = Math.abs(nums.get(i) - comparisonNumberInt);
+                if (diff1 < difference) {
+                    closest = nums.get(i);
+                }
+
+            }
+            
+          
+            
+            // 4) Run Remainder of program. LDR, FSUB, STR
+            for (int i = 41; i < input.size(); i++ ) {
+                String instruction[] = input.get(i).split(" ");
+                String opcode = instruction[0];
+                switch (opcode) {
+                    case "LDR":
+                        break;
+                    case "FSUB" :
+                        break;
+                    case "STR": 
+                        break;
+                }
+            }
+            TextArea2.append("Closest is: " + closest);
+            
+            
+            
+        } catch (Exception e) {
             String ex = e.getMessage();
         }
-        TextArea2.setText("Input is: ");
+      
         
-        for(String number: TextArea1.getText().split("\\n"))
-        {
-          if (number.matches("^\\d+$"))
-          {
-                    address++;
-           }
-          else
-          {
-              TextArea2.append("\nWrong input");
-              runner = 0;
-              break;
-          }
-        }
+        
     }//GEN-LAST:event_jButton18ActionPerformed
     // This method takes a string argument "addr" and returns a string value
     String LastAdd(String addr){
@@ -1929,7 +1984,7 @@ public static void main(String args[]) {
     private javax.swing.JTextField PC;
     private javax.swing.JTextField Priviledged;
     public javax.swing.JTextArea TextArea1;
-    private javax.swing.JTextArea TextArea2;
+    public javax.swing.JTextArea TextArea2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
