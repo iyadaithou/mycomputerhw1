@@ -1,0 +1,106 @@
+0016 FFFF-> Max value
+0017 1111->Stores closest Difference
+0018 1111->Temporary address to store current array index 
+0019 0100->Equal loop address
+001A 002F->Positive value address
+001B 0200->CLosest Diff address
+001C 0026->Main loop address
+001D 0102->Printing output loop address
+001E 1111
+001F 1111-> Address to store the answer
+
+
+Begin Address->0020
+0020 0D01 ->LDA,01,0001 ->Reset R1 to the beginning of the input array(0001)
+0021 0C00->LDA,00,0000->clear R0
+0022 5040->ORR,00,01->Transfer R1 to R0
+0023 0F14->LDA,11,0014->R3 holds the number of elements left to check
+0024 0616->LDR,10,0016->R2 stores closest difference, initialize to high number
+0025 0A17->STR,10,0017-> Store running difference at address 0017
+
+Main loop address->0026
+0026 0515->LDR,01,0015->Load R1 with search integer stored at 0015 address
+0027 0617->LDR,10,0017->Load R2 with closest difference stored at 0017
+0028 0818->STR,00,0018->Store current array index at 0018
+0029 1538->SMR,01,0018,1 (indirect addressing)-> Set R1=searchnumber-arrayindex value
+002A 2139->JZ,01,0019,1(indirect addressing)-> If difference is 0 jump to address 0100 equal loop 
+002B 3D3A->JGE,01,001A,1 (indirect addressing)->Jump if the difference is positive
+002C 0918-> STR,01,0018->Store negative difference at 0018
+002D 0D00-> LDA,01,0000-> reset GPR1 to 0000
+002E 1518->SMR,01,1018-> perform 0000-negative difference so that it becomes positive
+
+Positive Values address->002F
+002F 0918->STR,01,0018 ->Store difference at 0018
+0030 1618->SMR,10,0018 -> subtract closest diff and running difference
+0031 3E3B->JGE,10,001B,1 (indirect addressing)->if closest diff> diff then Jump to closest diff loop
+0032 1801->AIR,00,0001-> increment Array Index by 1
+0033 3B3C->SOB,11,001C,1 (indirect addressing)-> jump to start of the loop if we havent reached end of array
+0034 2C3D->JMA,00,001D,1 (indirect addressing)-> Jump to output address
+
+
+CLosestDiff add->0200
+0200 0917->STR,01,0017->Store difference at 0017
+0201 0818->STR,00,0018-> Store array index at 0018
+0202 0538->LDR,01,0018,1 (indirect addressing)-> Load R1 with value of array index
+0203 091F->STR,01,001F->Answer is stored at 001F address
+0204 1801->AIR,00,0001->Increment array index by 1
+0205 3B3C->SOB,11,001C,1 (indirect addressing)-> jump to start of the loop if we havent reached end of array
+0206 2C3D->JMA,00,001D,1 (indirect addressing)-> Jump to output address
+
+
+EqualLoop add->0100
+0100 0515->LDR,01,0015-> if match is found answer is value at R1
+0101 091F->STR,01,001F->Store R1 at 001F
+
+
+output print address->0102
+Start printing input number
+0102 0501->LDR,01,0001
+0103 C901->OUT,01,001
+0104 0502->LDR,01,0002
+0105 C901->OUT,01,001
+0106 0503->LDR,01,0003
+0107 C901->OUT,01,001
+0108 0504->LDR,01,0004
+0109 C901->OUT,01,001
+010A 0505->LDR,01,0005
+010B C901->OUT,01,001
+010C 0506->LDR,01,0006
+010D C901->OUT,01,001
+010E 0507->LDR,01,0007
+010F C901->OUT,01,001
+0110 0508->LDR,01,0008
+0111 C901->OUT,01,001
+0112 0509->LDR,01,0009
+0113 C901->OUT,01,001
+0114 050A->LDR,01,000A
+0115 C901->OUT,01,001
+0116 050B->LDR,01,000B
+0117 C901->OUT,01,001
+0118 050C->LDR,01,000C
+0119 C901->OUT,01,001
+011A 050D->LDR,01,000D
+011B C901->OUT,01,001
+011C 050E->LDR,01,000E
+011D C901->OUT,01,001
+011E 050F->LDR,01,000F
+011F C901->OUT,01,001
+0120 0510->LDR,01,0010
+0121 C901->OUT,01,001
+0122 0511->LDR,01,0011
+0123 C901->OUT,01,001
+0124 0512->LDR,01,0012
+0125 C901->OUT,01,001
+0126 0513->LDR,01,0013
+0127 C901->OUT,01,001
+0128 0514->LDR,01,0014
+0129 C901->OUT,01,001
+
+
+Print value to be searched
+012A 0515->LDR,01,0015
+012B C901->OUT,01,001
+
+Print Answer
+012C 051F->LDR,01,001F
+012D C901->OUT,01,001
