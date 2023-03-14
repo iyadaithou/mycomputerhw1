@@ -1890,42 +1890,67 @@ public void execute(String prc,String bin) {
             String comparisonNumber = Integer.toBinaryString(comparisonNumberInt);
             
             // 4) Run Store procedure against memory for comparison
-            String locationForComparison = input.get(40).split("")[2];
+            String locationForComparison = input.get(40).split(" ")[2];
             memorya.put(locationForComparison, comparisonNumber);
             
-            ArrayList<Integer> nums = new ArrayList();
-            for (String number : enteredNumbers) {
-                nums.add(Integer.parseInt(number));
-            }
-            Integer closest = nums.get(0);
-            Integer difference = Math.abs(nums.get(0) - comparisonNumberInt);
-            for (int i = 1; i < nums.size(); i++) {
-                Integer diff1 = Math.abs(nums.get(i) - comparisonNumberInt);
-                if (diff1 < difference) {
-                    closest = nums.get(i);
-                }
-
-            }
             
-          
+//            ArrayList<Integer> nums = new ArrayList();
+//            for (String number : enteredNumbers) {
+//                nums.add(Integer.parseInt(number));
+//            }
+//            Integer closest = nums.get(0);
+//            Integer difference = Math.abs(nums.get(0) - comparisonNumberInt);
+//            for (int i = 1; i < nums.size() -1; i++) {
+//                Integer diff1 = Math.abs(nums.get(i) - comparisonNumberInt);
+//                if (diff1 < difference) {
+//                    difference = diff1;
+//                    closest = nums.get(i);
+//                }
+//
+//            }
             
-            // 4) Run Remainder of program. LDR, FSUB, STR
+            // 4) set initial conditions
+            GPR1.setText(memorya.get(locationForComparison));
+            GPR0.setText(Integer.toBinaryString(Integer.MAX_VALUE));
+            
+            
+            // 5) Run Remainder of program. LDR, FSUB, STR, ABS, LWR
             for (int i = 41; i < input.size(); i++ ) {
                 String instruction[] = input.get(i).split(" ");
                 String opcode = instruction[0];
+                String reg = "";
+                if (instruction.length > 1) {
+                    reg = instruction[1];
+                };
                 switch (opcode) {
                     case "LDR":
+                        switch (reg) {
+                                // not using reg1
+                                case "01": 
+                                    GPR2.setText(memorya.get(instruction[2]));
+                                    break;
+                        }
                         break;
                     case "FSUB" :
+                        Integer value = Integer.parseInt(GPR1.getText(), 2) - Integer.parseInt(GPR2.getText(), 2);
+                        // Using absolute value here (shortcut for calling ABS)
+                        GPR3.setText(Integer.toBinaryString(Math.abs(value)));
+                        break;
+                    case "CMP" :
+                        if (Integer.parseInt(GPR3.getText(), 2) < Integer.parseInt(GPR0.getText(), 2)) {
+                        memorya.put("1062", GPR2.getText());
+                        GPR0.setText(GPR3.getText());
+                        }
                         break;
                     case "STR": 
                         break;
                 }
             }
-            TextArea2.append("Closest is: " + closest);
+            // TextArea2.append("Closest is: " + closest + "\n");
+            TextArea2.append("Number to search is: " + comparisonNumberInt + "\n");
             
-            
-            
+            TextArea2.append("Closest from the list is: " + Integer.parseInt(memorya.get("1062"), 2));
+           
         } catch (Exception e) {
             String ex = e.getMessage();
         }
