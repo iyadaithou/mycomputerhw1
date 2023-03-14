@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.teama.computer","l":"Computer"},{"p":"com.teama.computer","l":"Simulator"}];updateSearchResults();

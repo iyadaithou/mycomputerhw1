@@ -1,0 +1,46 @@
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Computer 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'Computer 1.0-SNAPSHOT API'
+com.teama.computer
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/src/main/java = 1678782573875
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/tag-search-index.js = 1678802143011
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/overview-tree.html = 1678802142968
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/module-search-index.js = 1678802143010
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/index.html = 1678802143057
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/package-search-index.js = 1678802143010
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/jquery-ui.overrides.css = 1678802143086
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/serialized-form.html = 1678802142905
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/index-all.html = 1678802143048
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/allpackages-index.html = 1678802143009
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/member-search-index.js = 1678802143011
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/copy.svg = 1678802143077
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/script.js = 1678802143076
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/stylesheet.css = 1678802143075
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/search-page.js = 1678802143081
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/help-doc.html = 1678802143070
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/element-list = 1678802142580
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/search.html = 1678802143053
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/allclasses-index.html = 1678802143003
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/type-search-index.js = 1678802143010
+/Users/iyadaithou/Downloads/teama.computer_Computer_jar_1.0-SNAPSHOT/target/site/apidocs/search.js = 1678802143079
