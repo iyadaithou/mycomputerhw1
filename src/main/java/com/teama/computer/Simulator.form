@@ -354,7 +354,7 @@
                       <Component id="MFR" min="-2" pref="165" max="-2" attributes="0"/>
                       <Component id="Priviledged" min="-2" pref="165" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="PC" min="-2" pref="165" max="-2" attributes="0"/>
+                          <Component id="counterprg" min="-2" pref="165" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jButton8" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -407,7 +407,7 @@
                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="PC" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="counterprg" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton8" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -478,7 +478,7 @@
             <Property name="text" type="java.lang.String" value="Priviledged"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="PC">
+        <Component class="javax.swing.JTextField" name="counterprg">
         </Component>
         <Component class="javax.swing.JButton" name="jButton8">
           <Properties>

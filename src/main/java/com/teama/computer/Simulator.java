@@ -37,8 +37,10 @@ public class Simulator extends javax.swing.JFrame {
          protected boolean removeEldestEntry(Map.Entry<String, String> eldest) {   //remove first entry when the cache exceeds 16 line limit
             return size() > maximum;}
          };
+   
+        
   
-   HashMap<String, String> instruct = new HashMap<String, String>();
+   HashMap<String, String> operat = new HashMap<String, String>();
  
     int counter=0; //initialize program counter
     String r="";//genereal register 
@@ -72,13 +74,14 @@ public class Simulator extends javax.swing.JFrame {
     String ixr3="0";//indirect register
     
     boolean pc1=true;
-    boolean negative=false;//undeflow
+    boolean negative=false;
     int cc=0;
-    int cc1=0; //overflow
-    int cc2=0;//underflow
-    int cc3=0; //divide by zero
-    int cc4=0;//equal
+    int cc1=0; 
+    int cc2=0;
+    int cc3=0; 
+    int cc4=0;
       String hex;
+      
       
       public static final HashMap<String, String> operations = new HashMap<String, String>();
 	static {
@@ -156,7 +159,7 @@ public class Simulator extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        PC = new javax.swing.JTextField();
+        counterprg = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
         MAR = new javax.swing.JTextField();
         jButton9 = new javax.swing.JButton();
@@ -465,7 +468,7 @@ public class Simulator extends javax.swing.JFrame {
                     .addComponent(MFR, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Priviledged, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(PC, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(counterprg, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton8))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -506,7 +509,7 @@ public class Simulator extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(counterprg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(jButton8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1095,7 +1098,6 @@ public class Simulator extends javax.swing.JFrame {
 
     private void jToggleButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton12ActionPerformed
         // TODO add your handling code here:
-        //code to toggle 1 or 0 in Instruction buttons
          boolean selected = jToggleButton12.getModel().isSelected();
        if (selected){
             x4="1";
@@ -1169,8 +1171,7 @@ public class Simulator extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton16ActionPerformed
 
     private void jToggleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton7ActionPerformed
-        // TODO add your handling code here:
-        //code to toggle 1 or 0 in Instruction buttons
+      
          boolean selected = jToggleButton7.getModel().isSelected();
        if (selected){
             x9="1";
@@ -1184,8 +1185,7 @@ public class Simulator extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton7ActionPerformed
 
     private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
-        // TODO add your handling code here:
-        //code to toggle 1 or 0 in Instruction buttons
+        
          boolean selected = jToggleButton6.getModel().isSelected();
        if (selected){
             x10="1";
@@ -1199,8 +1199,7 @@ public class Simulator extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton6ActionPerformed
 
     private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
-        // TODO add your handling code here:
-        //code to toggle 1 or 0 in Instruction buttons
+       
          boolean selected = jToggleButton5.getModel().isSelected();
        if (selected){
             x11="1";
@@ -1214,8 +1213,7 @@ public class Simulator extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton5ActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
-        // TODO add your handling code here:
-        //code to toggle 1 or 0 in Instruction buttons
+    
          boolean selected = jToggleButton4.getModel().isSelected();
        if (selected){
             x12="1";
@@ -1229,8 +1227,7 @@ public class Simulator extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        // TODO add your handling code here:
-        //code to toggle 1 or 0 in Instruction buttons
+       
          boolean selected = jToggleButton3.getModel().isSelected();
        if (selected){
             x13="1";
@@ -1244,8 +1241,7 @@ public class Simulator extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
-        //code to toggle 1 or 0 in Instruction buttons
+      
          boolean selected = jToggleButton2.getModel().isSelected();
        if (selected){
             x14="1";
@@ -1259,8 +1255,7 @@ public class Simulator extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-        //code to toggle 1 or 0 in Instruction buttons
+
          boolean selected = jToggleButton1.getModel().isSelected();
        if (selected){
             x15="1";
@@ -1272,8 +1267,8 @@ public class Simulator extends javax.swing.JFrame {
            jToggleButton1.setForeground(Color.BLACK);
        }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
-    public void sTringToHexa(){
-        //function to combine all bits from instruction buttons to one single binary number which is converted to hexa decimal value
+    public void Stringhex(){
+      
         String finals=x15+x14+x13+x12+x11+x10+x9+x8+x7+x6+x5+x4+x3+x2+x1+x0;//concate each bit
         int binary= Integer.parseInt(finals,2);//convert to binary int
          hex = Integer.toString(binary,16).toUpperCase();//convert to hexa
@@ -1282,9 +1277,9 @@ public class Simulator extends javax.swing.JFrame {
         
     }
      
-    String EffectiveAddress (String address, String bin){
+    String Eaddress (String address, String bin){
     //function to calculate and return effective address depeinding on value of "I" bit
-    sTringToHexa();
+    Stringhex();
          String add= address;
       
               i = bin.substring(10, 11);
@@ -1391,9 +1386,6 @@ public class Simulator extends javax.swing.JFrame {
      String DecimaltoHexa(int dec){
        //convert Decimal to hexa decimal
         hex = String.format("%04x", dec & 0xFFFF).toUpperCase();
-//         hex = Integer.toString(dec,16).toUpperCase();
-//        if (hex.length() < 4)
-//    hex = "000".substring(hex.length() - 1) + hex;
         return hex;
         
     }
@@ -1407,21 +1399,18 @@ public class Simulator extends javax.swing.JFrame {
         
     }
      String hexToBinary(String hex)
-    {
-        //code to accept and convert hexadecimal to binary
-        // variable to store the converted
-        // Binary Sequence
+    { 
+  
+        
         String binary = "";
  
-        // converting the accepted Hexadecimal
-        // string to upper case
+       
         hex = hex.toUpperCase();
  
-        // initializing the HashMap class
+        
         HashMap<Character, String> hashMap
             = new HashMap<Character, String>();
- 
-        // storing the key value pairs
+
         hashMap.put('0', "0000");
         hashMap.put('1', "0001");
         hashMap.put('2', "0010");
@@ -1448,18 +1437,13 @@ public class Simulator extends javax.swing.JFrame {
             // extracting each character
             ch = hex.charAt(i);
  
-            // checking if the character is
-            // present in the keys
+            
             if (hashMap.containsKey(ch))
  
-                // adding to the Binary Sequence
-                // the corresponding value of
-                // the key
+               
                 binary += hashMap.get(ch);
  
-            // returning Invalid Hexadecimal
-            // String if the character is
-            // not present in the keys
+      
             else {
                 binary = "Invalid Hexadecimal String";
                 return binary;
@@ -1470,9 +1454,8 @@ public class Simulator extends javax.swing.JFrame {
         return binary;
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-      //setting value to general purpose register
-       sTringToHexa();
+       
+       Stringhex();
         
         GPR1.setText(hex);
         Rep1=GPR1.getText();
@@ -1480,9 +1463,8 @@ public class Simulator extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-         //setting value to general purpose register
-         sTringToHexa();
+        
+         Stringhex();
         GPR2.setText(hex);
         Rep2=GPR2.getText();
         
@@ -1491,7 +1473,7 @@ public class Simulator extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
          //setting value to general purpose register
-        sTringToHexa();
+        Stringhex();
         
         GPR0.setText(hex);
         Rep0=GPR0.getText();
@@ -1500,7 +1482,7 @@ public class Simulator extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
          //setting value to general purpose register
-        sTringToHexa();
+        Stringhex();
         
         GPR3.setText(hex);
         Rep3=GPR3.getText();
@@ -1509,7 +1491,7 @@ public class Simulator extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
          //setting value to index register
-        sTringToHexa();
+        Stringhex();
         
         IXR1.setText(hex);
         ixr1=IXR1.getText();
@@ -1518,7 +1500,7 @@ public class Simulator extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         //setting value to index register
-        sTringToHexa();
+        Stringhex();
         
         IXR2.setText(hex);
         ixr2=IXR2.getText();
@@ -1527,7 +1509,7 @@ public class Simulator extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         //setting value to index register
-        sTringToHexa();
+        Stringhex();
         
         IXR3.setText(hex);
         ixr3=IXR3.getText();
@@ -1536,22 +1518,22 @@ public class Simulator extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
         //setting value to Program counter
-        sTringToHexa();
+        Stringhex();
         
-        PC.setText(hex);
+        counterprg.setText(hex);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         //Setting value to MAR
-         sTringToHexa();
+         Stringhex();
         
         MAR.setText(hex);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-        sTringToHexa();
+        Stringhex();
          //Setting value to MBR
         
         MBR.setText(hex);
@@ -1577,7 +1559,7 @@ public class Simulator extends javax.swing.JFrame {
      printer.setText("");
      keyboard.setText("");   
      
-    PC.setText("0000");
+    counterprg.setText("0000");
     memory.clear();
     Caching.clear();
     displayCache();
@@ -1643,30 +1625,29 @@ public class Simulator extends javax.swing.JFrame {
         // TODO add your handling code here:
         //run button
       
-         sTringToHexa();
+         Stringhex();
           
                    
                   
              
       try{
          while (true){ //Keep running instructions till the last program counter entry available
-             int  prc=Integer.parseInt(PC.getText(),16);
-             String bin =hexToBinary(memory.get(PC.getText())); //extarcts binary from the vlaue staored at i address
-
+             int  prc=Integer.parseInt(counterprg.getText(),16);
+             String bin =hexToBinary(memory.get(counterprg.getText())); 
+             console.append("\n"+bin+"\n");
              System.out.println("i" + (prc)+" " +"value"+(bin)); 
              //System.out.println(bin);
              prc++;
-             PC.setText(DecimaltoHexa(prc));
+             counterprg.setText(DecimaltoHexa(prc));
          
-               execute(PC.getText(),bin); //pass address and converted binary values to  execute function
+               execute(counterprg.getText(),bin); 
                 
              
             
-               IR.setText(bin); //set instruction register
+               IR.setText(bin); 
               
 //             
-               instruct.put(i,bin); // record instruction and program counter in memory
-             
+               operat.put(i,bin); 
 //             
 
 
@@ -1683,53 +1664,26 @@ public class Simulator extends javax.swing.JFrame {
 public void execute(String prc,String bin) {
     //function to execute the instruction
     
-    String opcode = bin.substring(0, 6); //extracts opcode
+    String operationc = bin.substring(0, 6); 
               r = bin.substring(6, 8); //extracts general register location
 		ix = bin.substring(8, 10); //extracts index register location
 		i = bin.substring(10, 11); //indirect addressung
 		address = bin.substring(11, 16);// exctracts address value
-               String add=  EffectiveAddress(Hexa(address),bin); //converts address to effective address
+               String add=  Eaddress(Hexa(address),bin); //converts address to effective address
            
               int p = Integer.parseInt(prc,16)-1; //reduce program counter by 1 to get current program counter
                prc=DecimaltoHexa(p); // conver back to hexa decimal
               
 
-              System.out.println(opcode);
+              System.out.println(operationc);
                 System.out.println(add);
-             String instr=operations.get(opcode); //extracts instruction to be executed
+             String instr=operations.get(operationc); //extracts instruction to be executed
              
-//               for (String i : instruct.keySet()){
-//               //    System.out.println(i+instruct.get(i)+"ix:"+ix+"add"+add);
-//                   PC.setText(i);
-//            } 
+//              
              System.out.println(instr);
              System.out.println(r); 
              
-             
-             //code to print instructions in Engineer's console
-             if ("LDX".equals(instr) ||"STX".equals(instr) ){
-                 if("0".equals(i)){
-             console.append(prc + " : "+ instr + " "+ ix+" "+ Hexa(address)+"\n");
-                 }else{
-                      console.append(prc + " : "+instr + ", "+ ix+", "+ Hexa(address)+"," +i+"\n");
-                 }
-             }
-             else if ("MLT".equals(instr) ||"DVD".equals(instr) ||"TRR".equals(instr)||"AND".equals(instr)||"ORR".equals(instr) ){
-                 console.append(prc + " : "+instr + ", "+ r+", "+ ix+"\n");
-             }
-             else if("NOT".equals(instr)){
-                 console.append(prc + " : "+instr + ", "+ r+"\n");
-             }
-               else if("HLT".equals(instr)){
-                    console.append(prc + " : "+instr +"\n");
-               }
-             else{
-                 if("0".equals(i)){
-             console.append(prc + " : "+instr + ", "+ r+", "+ Hexa(address)+"\n");
-                 }else{
-                      console.append(prc + " : "+instr + ", "+ r+", "+ Hexa(address)+"," +i+"\n");
-                 }
-             }
+                   
      if(instr == "HLT"){System.out.println("null");// halt
      Halt="end";
      }
@@ -1737,87 +1691,87 @@ public void execute(String prc,String bin) {
          //instruction execution
      switch (instr){
                  case "LDR":
-                   LDR(opcode,r, ix,i,address, add) ;
+                   LDR(operationc,r, ix,i,address, add) ;
   
                      break;
                  case "LDA":
-                     LDA(opcode,r, ix,i,address, add) ;
+                     LDA(operationc,r, ix,i,address, add) ;
                       break;
                 case "HLT":
                      System.out.println("HLT");
                       Halt="end";
                       break;
                   case "STR":
-                      STR(opcode,r, ix,i,address, add) ;
+                      STR(operationc,r, ix,i,address, add) ;
                      
                       break;
                       
                   case "LDX":
-                      LDX(opcode,r, ix,i,address, add) ;
+                      LDX(operationc,r, ix,i,address, add) ;
                      
                      break;
                       
                 case "STX":
-                    STX(opcode,r, ix,i,address, add) ;
+                    STX(operationc,r, ix,i,address, add) ;
                                           
                       break;
                       
                 case "JZ":
-                     JZ(opcode,r,ix,i,address,add);
+                     JZ(operationc,r,ix,i,address,add);
                      
                       break;
                 
                       
                   case "JNE":
-                      JNE(opcode,r,ix,i,address,add);
+                      JNE(operationc,r,ix,i,address,add);
                       
                       break;
                       
                       
                     case "JCC":
-                        JCC(opcode,r,ix,i,address,add);
+                        JCC(operationc,r,ix,i,address,add);
                          
                       break;
                     
                     case "JMA":
-                        JMA(opcode,r,ix,i,address,add);
+                        JMA(operationc,r,ix,i,address,add);
                        
                         break;
                         
                         
                     case "JSR":  
-                        JSR(opcode,r,ix,i,address,add);
+                        JSR(operationc,r,ix,i,address,add);
                         
                         break;
                         
                     case "RFS":
-                        RFS(opcode,r,ix,i,address,add);
+                        RFS(operationc,r,ix,i,address,add);
 
                         break;
                         
                         
                     case "SOB":
-                        SOB(opcode,r,ix,i,address,add);
+                        SOB(operationc,r,ix,i,address,add);
                      
                       break;
                 
                       
                       case "JGE":
-                          JGE(opcode,r,ix,i,address,add);
+                          JGE(operationc,r,ix,i,address,add);
                      
                       break;
                     
                     case "AMR":
-                AMR(opcode,r,ix,i,address,add);
+                AMR(operationc,r,ix,i,address,add);
                      break;      
                     
                       case "SMR":
-                SMR(opcode,r,ix,i,address,add);
+                SMR(operationc,r,ix,i,address,add);
                      break;  
                      
                      
                     case "AIR":
-                        AIR(opcode,r,ix,i,address,add);
+                        AIR(operationc,r,ix,i,address,add);
                         
                     
                      break;  
@@ -1825,26 +1779,26 @@ public void execute(String prc,String bin) {
                      
                      
                          case "SIR":
-                             SIR(opcode,r,ix,i,address,add);
+                             SIR(operationc,r,ix,i,address,add);
                         
                      break; 
                      
                      
                      
                     case "MLT":
-                        MLT(opcode,r,ix,i,address,add);
+                        MLT(operationc,r,ix,i,address,add);
                             
                      break;
                      
                      
                       case "DVD":
-                           DVD(opcode,r,ix,i,address,add);
+                           DVD(operationc,r,ix,i,address,add);
                           
                      
                      break;      
                      
                      case "TRR":
-                         TRR(opcode,r,ix,i,address,add);
+                         TRR(operationc,r,ix,i,address,add);
                          
                         
                      
@@ -1854,18 +1808,18 @@ public void execute(String prc,String bin) {
                    
                      case "AND":
                         
-                            AND(opcode,r,ix,i,address,add);
+                            AND(operationc,r,ix,i,address,add);
                       
                      break; 
                      
                      case "ORR":
-                        ORR(opcode,r,ix,i,address,add);
+                        ORR(operationc,r,ix,i,address,add);
                            
                     
                      break; 
                      
                       case "NOT":
-                        NOT(opcode,r,ix,i,address,add);
+                        NOT(operationc,r,ix,i,address,add);
                            
                   
                      break; 
@@ -1901,7 +1855,7 @@ public void execute(String prc,String bin) {
 
 
 public void OUT(String r,String address){
-    //OUT opcode
+    //OUT operationc
     if("00001".equals(address)){
         int x = getRxyc(r);
          if ("00".equals(r)){
@@ -1910,8 +1864,9 @@ public void OUT(String r,String address){
                       
                      }
                      else if("01".equals(r)){
+                        printer.setText("");
                         
-                        printer.append(" Number :" +x);//prints both hexa decimal and ineteger value
+                        printer.append("The closest Number to your target number is:" +x);//prints both hexa decimal and ineteger value
                        
                      }
                       else if("10".equals(r)){
@@ -1921,7 +1876,7 @@ public void OUT(String r,String address){
                      }
                       else if("11".equals(r)){
                     
-                       printer.append( " Number :" +x);//prints both hexa decimal and ineteger value
+                       printer.append( " Number :" +x);
                       
                      }
     }
@@ -2095,7 +2050,7 @@ public void JZ(String opcode,String r, String ix,String i, String address,String
                         
                         if("0000".equals(temp)){  //if GPR0 is 0, change program counter to effective address
                             pc1=false;
-                            PC.setText(add);
+                            counterprg.setText(add);
                      
                             System.out.println(add);
                         }
@@ -2108,7 +2063,7 @@ public void JZ(String opcode,String r, String ix,String i, String address,String
                         
                         if("0000".equals(temp)){//if GPR1 is 0, change program counter to effective address
                             pc1=false;
-                            PC.setText(add);
+                            counterprg.setText(add);
                      
                             System.out.println(add);
                         }
@@ -2119,7 +2074,7 @@ public void JZ(String opcode,String r, String ix,String i, String address,String
                         String temp = GPR2.getText();
                      if("0000".equals(temp)){//if GPR2 is 0, change program counter to effective address
                             pc1=false;
-                            PC.setText(add);
+                            counterprg.setText(add);
                      
                             System.out.println(add);
                         }
@@ -2129,7 +2084,7 @@ public void JZ(String opcode,String r, String ix,String i, String address,String
                         String temp = GPR3.getText();
                        if("0000".equals(temp)){//if GPR3 is 0, change program counter to effective address
                             pc1=false;
-                            PC.setText(add);
+                            counterprg.setText(add);
                      
                             System.out.println(add);
                         }
@@ -2143,7 +2098,7 @@ public void JNE(String opcode,String r, String ix,String i, String address,Strin
                         
                         if(!"0000".equals(temp)){//if GPR0 is not equal to 0, change program counter to effective address
                             pc1=false;
-                            PC.setText(add);
+                            counterprg.setText(add);
                      
                             System.out.println(add);
                         }
@@ -2156,7 +2111,7 @@ public void JNE(String opcode,String r, String ix,String i, String address,Strin
                         
                         if(!"0000".equals(temp)){//if GPR1 is not equal to 0, change program counter to effective address
                             pc1=false;
-                            PC.setText(add);
+                            counterprg.setText(add);
                      
                             System.out.println(add);
                         }
@@ -2167,7 +2122,7 @@ public void JNE(String opcode,String r, String ix,String i, String address,Strin
                         String temp = GPR2.getText();
                      if(!"0000".equals(temp)){//if GPR2 is not equal to 0, change program counter to effective address
                             pc1=false;
-                            PC.setText(add);
+                            counterprg.setText(add);
                      
                             System.out.println(add);
                         }
@@ -2177,7 +2132,7 @@ public void JNE(String opcode,String r, String ix,String i, String address,Strin
                         String temp = GPR3.getText();
                        if(!"0000".equals(temp)){
                             pc1=false;
-                            PC.setText(add);
+                            counterprg.setText(add);
                      
                             System.out.println(add);
                         }
@@ -2188,41 +2143,41 @@ public void JCC(String opcode,String r, String ix,String i, String address,Strin
     //JCC implementation
    if ("00".equals(r)){//if cc1=1, set program counter to EA
     if(cc1!=0){
-                         PC.setText(add);
+                         counterprg.setText(add);
                       System.out.println(add);
                          }
    }
    else if ("01".equals(r)){//if cc2=1, set program counter to EA
     if(cc2!=0){
-                         PC.setText(add);
+                         counterprg.setText(add);
                       System.out.println(add);
                          }
    }
    else if ("10".equals(r)){//if cc3=1, set program counter to EA
     if(cc3!=0){
-                         PC.setText(add);
+                         counterprg.setText(add);
                       System.out.println(add);
                          }
    }
    else if ("11".equals(r)){//if cc4=1, set program counter to EA
     if(cc4!=0){
-                         PC.setText(add);
+                         counterprg.setText(add);
                       System.out.println(add);
                          }
    }
 }
 public void JMA(String opcode,String r, String ix,String i, String address,String add){
     //JMA implementation
-     PC.setText(add);//Unditionally set PC to EA
+     counterprg.setText(add);//Unditionally set counterprg to EA
 }
 public void JSR(String opcode,String r, String ix,String i, String address,String add){
     //JSR implementation
-    String temp=PC.getText();
+    String temp=counterprg.getText();
                     
                         int temp1=Integer.parseInt(temp,16);
                         System.out.println(temp1);
                       GPR3.setText (DecimaltoHexa( temp1)) ; //increment program counter by 1 and store it in GPR3
-                      PC.setText(add);//set PC to EA
+                      counterprg.setText(add);//set counterprg to EA
 }
 public void RFS(String opcode,String r, String ix,String i, String address,String add){
     //                        String hex1 = Integer.toString(Integer.parseInt(address),16).toUpperCase();
@@ -2231,7 +2186,7 @@ public void RFS(String opcode,String r, String ix,String i, String address,Strin
                         
                         //RFS imsplementation
                         GPR0.setText(add);//Store address to GPR0
-                        PC.setText(GPR3.getText()); //set program counter to c(GPR3)
+                        counterprg.setText(GPR3.getText()); //set program counter to c(GPR3)
     
 }
 public void SOB(String opcode,String r, String ix,String i, String address,String add){
@@ -2245,7 +2200,7 @@ public void SOB(String opcode,String r, String ix,String i, String address,Strin
                       GPR0.setText (DecimaltoHexa( temp3)) ;//c(r)=c(r)-1
                      
                       if(temp3>0){
-                          PC.setText(add);//set program to EA if c(r)>0
+                          counterprg.setText(add);//set program to EA if c(r)>0
                       }
                      
                         
@@ -2260,7 +2215,7 @@ public void SOB(String opcode,String r, String ix,String i, String address,Strin
                       GPR1.setText (DecimaltoHexa( temp3)) ;//c(r)=c(r)-1
                      
                       if(temp3>0){
-                          PC.setText(add);//set program to EA if c(r)>0
+                          counterprg.setText(add);//set program to EA if c(r)>0
                       }
                         
                      }
@@ -2272,7 +2227,7 @@ public void SOB(String opcode,String r, String ix,String i, String address,Strin
                       GPR2.setText (DecimaltoHexa( temp3)) ;//c(r)=c(r)-1
                      
                       if(temp3>0){
-                          PC.setText(add); //set program to EA if c(r)>0
+                          counterprg.setText(add); //set program to EA if c(r)>0
                       }
                      }
                       else if("11".equals(r)){
@@ -2284,7 +2239,7 @@ public void SOB(String opcode,String r, String ix,String i, String address,Strin
                       GPR3.setText (DecimaltoHexa( temp3)) ; //c(r)=c(r)-1
                      
                       if(temp3>0){
-                          PC.setText(add); //set program to EA if c(r)>0
+                          counterprg.setText(add); //set program to EA if c(r)>0
                       }
                      }
                       
@@ -2303,7 +2258,7 @@ public void JGE(String opcode,String r, String ix,String i, String address,Strin
                       }
                      
                       if(temp3+1>=0){//if c(r)>=0 set porgram counter as EA
-                          PC.setText(add);
+                          counterprg.setText(add);
                       }
                      
                         
@@ -2320,7 +2275,7 @@ public void JGE(String opcode,String r, String ix,String i, String address,Strin
                       }
                      
                       if(temp3+1>=0){
-                          PC.setText(add);//if c(r)>=0 set porgram counter as EA
+                          counterprg.setText(add);//if c(r)>=0 set porgram counter as EA
                       }
                         
                      }
@@ -2334,7 +2289,7 @@ public void JGE(String opcode,String r, String ix,String i, String address,Strin
                       }
                      
                       if(temp3+1>=0){
-                          PC.setText(add);//if c(r)>=0 set porgram counter as EA
+                          counterprg.setText(add);//if c(r)>=0 set porgram counter as EA
                       }
                      }
                       else if("11".equals(r)){
@@ -2348,7 +2303,7 @@ public void JGE(String opcode,String r, String ix,String i, String address,Strin
                       }
                      
                       if(temp3+1>=0){
-                          PC.setText(add);//if c(r)>=0 set porgram counter as EA
+                          counterprg.setText(add);//if c(r)>=0 set porgram counter as EA
                       }
                      }
                     
@@ -2475,7 +2430,7 @@ public void AIR(String opcode,String r, String ix,String i, String address,Strin
 }
 public void SIR(String opcode,String r, String ix,String i, String address,String add){
     //SIR implementation
-     if ("00".equals(r)){ //r=c(r)-c(EA)
+     if ("00".equals(r)){ 
                            int temp2= Integer.parseInt(address,2);
                            int temp3 = Integer.parseInt(GPR0.getText(),16);
                         GPR0.setText(DecimaltoHexa(temp3-temp2));
@@ -2817,34 +2772,34 @@ public void setRxyc( String r, String data){
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
         //Single Step
-         sTringToHexa();
+         Stringhex();
          jLabel19.setForeground(Color.BLACK); //set halt color to black when code is running
        
              
            
-             int  prc=Integer.parseInt(PC.getText(),16); //extract program counter value
+             int  prc=Integer.parseInt(counterprg.getText(),16); //extract program counter value
             try{
-              String bin =hexToBinary(memory.get(PC.getText())); // extracts binary form instruction at program counter
-         //    String bin =instruct.get(Integer.toString(prc));
+              String bin =hexToBinary(memory.get(counterprg.getText())); // extracts binary form instruction at program counter
+         //    String bin =operat.get(Integer.toString(prc));
          System.out.println(bin);
 //             if (prc>=counter){
 //                 counter++;
-//                 PC.setText(DecimaltoHexa(counter));
+//                 counterprg.setText(DecimaltoHexa(counter));
 //             }
               prc++;
-             PC.setText(DecimaltoHexa(prc));
-             execute(PC.getText(),bin);// execute the instruction
+             counterprg.setText(DecimaltoHexa(prc));
+             execute(counterprg.getText(),bin);// execute the instruction
         
            
              
              pc1=true;
              IR.setText(bin);
-             String end=LastAdd(PC.getText());// Halt foreground color changed to red when reached end address
+             String end=LastAdd(counterprg.getText());// Halt foreground color changed to red when reached end address
              if("ends".equals(end)){
              jLabel19.setForeground(Color.red);
-            // PC.setText("0000");
+            // counterprg.setText("0000");
              
-             //  execute(PC.getText(),memory.get(PC.getText()));
+             //  execute(counterprg.getText(),memory.get(counterprg.getText()));
              
              
              }
@@ -2856,10 +2811,7 @@ public void setRxyc( String r, String data){
              
              
               
-              
              
-        
-        
         
         
         
@@ -2875,15 +2827,22 @@ public void setRxyc( String r, String data){
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-      
-          console.append("Type 20 numbers in the keyboard, plus a target number at the end\n");
-          String S= keyboard.getText();//take inut from keybaord
+    //Stringhex();     
+     
+        
+      console.append("Type 20 numbers in the keyboard, plus a target number at the end\nThen click on Program 1 again");
+      String S= keyboard.getText();//take inut from keybaord
           
         int counter =1;
         String[] arrSplit = S.split(",");
-     int[] numbers = new int[21];
+        int[] numbers = new int[21];
     
-     PC.setText("0020"); //set program counter to start of program
+        counterprg.setText("0020"); 
+        memory.put("0016","FFFF");
+        memory.put("0017","1111");
+        memory.put("0018","1111");
+        memory.put("0019","0100");
+        memory.put("001A","002F");
    
         for (int i=0; i < arrSplit.length; i++)
             
@@ -2894,29 +2853,30 @@ public void setRxyc( String r, String data){
       counter++;
  
     }
-   //  console.append(Integer.toString(counter));
+ 
      if (counter<22){
          console.append(" \n Seems, like you don't have exactly 21 numbers please try again\n");//check if all values have been provided
      }
      else{
-         console.append("Great! Now you can run the program\n");
+         console.append("\nGreat! Now you clik on run\n");
      }
         int searchNumber=numbers[20];
  //       
         String [] tokens;
      try{
             
-        File myObj = new File("machinecode.txt"); //opens file "IPL.txt"
+      File myObj = new File("machinecode.txt"); 
       Scanner myReader = new Scanner(myObj);
-        
+      
       while (myReader.hasNextLine()) {
         String data = myReader.nextLine();
-         tokens = data.split(" ");
-         if(memory.size() == 2048){           // sets memory to 2048 words
+         tokens = data.split("-");
+         if(memory.size() == 2048){           
              JOptionPane.showMessageDialog(null,"Word memory reached");
            
        }else{
-         memory.put(tokens[0],tokens[1]);   //sets value and their address in memory
+         memory.put(tokens[0],tokens[1]); 
+         
          updateCache(tokens[0],tokens[1]);
          displayCache();
          }
@@ -3005,10 +2965,10 @@ public void setRxyc( String r, String data){
     private javax.swing.JTextField MAR;
     private javax.swing.JTextField MBR;
     private javax.swing.JTextField MFR;
-    private javax.swing.JTextField PC;
     private javax.swing.JTextField Priviledged;
     private javax.swing.JTextArea cache;
     private javax.swing.JTextArea console;
+    private javax.swing.JTextField counterprg;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
